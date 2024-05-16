@@ -3,10 +3,12 @@ package simulador.entrenador;
 import java.util.ArrayList;
 import java.util.List;
 
+import simulador.pokemon.Pokemon;
+
 public class Entrenador {
 
     private String entrenador;
-    private List<String> pokemones;
+    private List<Pokemon> pokemones;
 
     public Entrenador(String nombre) {
         this.entrenador = entrenador;
@@ -14,7 +16,7 @@ public class Entrenador {
     }
 
 
-    public void agregarPokemon (String pokemon){
+    public void agregarPokemon (Pokemon pokemon){
         pokemones.add(pokemon);
         
     }
@@ -26,13 +28,13 @@ public class Entrenador {
             return;
 
         }
-        String pokemonSeleccionado = pokemones.get(indicePokemon);
+        Pokemon pokemonSeleccionado = pokemones.get(indicePokemon);
         System.out.println("Entrenando a " + pokemonSeleccionado);
 
     }
     
     public void mostrarPokemones() {
-        for (String pokemon : pokemones) {
+        for (Pokemon pokemon : pokemones) {
             System.out.println(pokemon);
         }
     }
@@ -43,7 +45,7 @@ public class Entrenador {
             return;
 
         }
-        String pokemonSeleccionado = pokemones.get(indicePokemon);
+        Pokemon pokemonSeleccionado = pokemones.get(indicePokemon);
         System.out.println("Preparando a " + pokemonSeleccionado + " para la batalla");
        
 }
