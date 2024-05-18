@@ -3,17 +3,19 @@ package simulador.pokemon;
 public abstract class Pokemon {
 
     private String nombre;
-    private int Salud;
+    private int salud;
     private int puntosDeAtaque;
     private String tipo;
     private String estado;
 
-    public Pokemon atacar() {
-        int ataque = 1;
+    public int atacar() {
+        int ataque = puntosDeAtaque ;
+        return ataque;
     }
 
     public int recibrirDaño() {
-
+       int recibrirDaño = salud-atacar(); 
+       
     }
 
     public entrenar(){
