@@ -5,21 +5,30 @@ public abstract class Pokemon {
     private String nombre;
     private int salud;
     private int puntosDeAtaque;
-    private String tipo;
-    private String estado;
+    private TipoPokemon tipo;
+    private Estado estado;
 
-    public int atacar() {
-        int ataque = puntosDeAtaque ;
-        return ataque;
+    public Pokemon(String nombre, int salud, int puntosDeAtaque, TipoPokemon tipo){
+        this.nombre = nombre;
+        this.salud = salud;
+        this.puntosDeAtaque = puntosDeAtaque;
+        this.tipo = tipo;
+        this.estado = estado; 
     }
 
-    public int recibrirDaño() {
-       int recibrirDaño = salud-atacar(); 
-       
+
+    public void atacar(Pokemon oponente) {
+        int ataque = (int)(puntosDeAtaque* TipoPokemon.multiplicadorDeDaño(this.tipo, oponente.tipo));
+        oponente.recibrirDaño(ataque);
     }
 
-    public entrenar(){
+    public void recibrirDaño(int danio) {
+        salud-=danio;
+    }
 
+    public void entrenar(){
+        salud+=20;
+        puntosDeAtaque+=5;
 
     }
 

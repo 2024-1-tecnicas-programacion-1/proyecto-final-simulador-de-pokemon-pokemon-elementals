@@ -20,8 +20,7 @@ ROCA,
 ACERO,
 AGUA;
 
-// esto no es necesariamente el funcionamiento real de el codigo solo se tiene de referencia y se puede cambiar para quedar mas compacto
-public double multiplicadorDeDaño(TipoPokemon atacante, TipoPokemon defensor){
+public static double multiplicadorDeDaño(TipoPokemon atacante, TipoPokemon defensor){
 
 
 
