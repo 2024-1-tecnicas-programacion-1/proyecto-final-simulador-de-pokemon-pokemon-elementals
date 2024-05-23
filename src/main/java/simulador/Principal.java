@@ -6,14 +6,36 @@ import simulador.pokemon.TipoPokemon;
 
 public class Principal {
 
-    LinkedList<Entrenador> entrenadores = new LinkedList<>();
+   LinkedList<Entrenador> entrenadores = new LinkedList<>();
+   
     public static void main(String[] args) {
         mostrarMenuPrincipal();
+        
     }
 
     public static void registrarEntrenador(){
         Scanner sc = new Scanner(System.in);
-        //introducir codigo para leer entrenador
+        String nombre = sc.nextLine();
+        Entrenador nuevoEntrenador = new Entrenador(nombre);
+
+        if(entrenador es.contains(nombre)){
+            System.out.println("este entrenador ya esta en la base de datos");
+        }else{
+            entrenadores.add(nuevoEntrenador);
+            System.out.println("El entrenador nuevo ha sido agregado");
+           
+        }
+
+        
+
+    }
+
+    public static void listaEntrenadores(){
+        for(int i=0; i>entrenadores.lenght; i++){
+            entrenadores.get(i);
+
+        }
+
 
     }
 
