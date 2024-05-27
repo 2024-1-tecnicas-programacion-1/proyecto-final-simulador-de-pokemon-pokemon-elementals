@@ -32,4 +32,12 @@ public abstract class Pokemon {
 
     }
 
+    public double getSalud(){
+        return this.salud;
+    }
+
+    public String getNombre(){
+        return this.nombre;
+    }
+
 }

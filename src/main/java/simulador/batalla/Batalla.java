@@ -1,10 +1,29 @@
 package simulador.batalla;
 
+import simulador.pokemon.Pokemon;
+
 public class Batalla {
 
-    
-    // TODO: Aquí va tu código
-    //La idea principal seria hacer un ciclo que no acabe hasta que la vida de todos los pokemon de un entrenador sea igual o menor a 0
+    public String IniciarBatalla(Pokemon pokemon1, Pokemon pokemon2){
+        String mensaje = "¡La batalla ha comenzado!\n";
+        String ganador;
 
-    
+        while(pokemon1.getSalud()<0 && pokemon2.getSalud()>0){
+            pokemon1.atacar(pokemon2);
+            if (pokemon1.getSalud()>0){
+                pokemon1.atacar(pokemon1);
+            }
+
+        }
+        if(pokemon1.getSalud()<=0){
+            ganador = pokemon2.getNombre();
+
+        }else {
+            ganador = pokemon1.getNombre();
+        }
+
+        return ganador;
+
+    }
+
 }
