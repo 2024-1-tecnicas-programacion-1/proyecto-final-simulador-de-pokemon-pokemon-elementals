@@ -1,5 +1,6 @@
 package simulador;
 import java.util.*;
+import persistencia.ArchivosConexion;
 
 import simulador.entrenador.Entrenador;
 import simulador.pokemon.Pokemon;
@@ -22,8 +23,7 @@ public class Principal {
 
         if(entrenadores.contains(nombre)){
             System.out.println("este entrenador ya esta en la base de datos");
-        }else{
-            entrenadores.add(nuevoEntrenador);
+        } else{(entrenadores.add(nombre));
             System.out.println("El entrenador nuevo ha sido agregado");
            
         }
@@ -33,7 +33,7 @@ public class Principal {
     }
 
     public static void listaEntrenadores(){
-        for(int i=0; i>entrenadores.lenght; i++){
+        for(int i=0; i<entrenadores.size(); i++){
             entrenadores.get(i);
 
         }
@@ -78,6 +78,7 @@ public class Principal {
             System.out.println("Opción incorrecta");
             }
         }while(opcion!=4);
+        ArchivosConexion.guardar(entrenadores, );
     }
 
         public static void mostrarSubmenu1(){
