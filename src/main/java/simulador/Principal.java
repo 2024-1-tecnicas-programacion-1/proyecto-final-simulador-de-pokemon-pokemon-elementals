@@ -2,11 +2,13 @@ package simulador;
 import java.util.*;
 
 import simulador.entrenador.Entrenador;
+import simulador.pokemon.Pokemon;
 import simulador.pokemon.TipoPokemon;
 
 public class Principal {
+   static Scanner sc = new Scanner(System.in);
 
-   LinkedList<Entrenador> entrenadores = new LinkedList<>();
+   static LinkedList<Entrenador> entrenadores = new LinkedList<>();
    
     public static void main(String[] args) {
         mostrarMenuPrincipal();
@@ -14,11 +16,11 @@ public class Principal {
     }
 
     public static void registrarEntrenador(){
-        Scanner sc = new Scanner(System.in);
+        
         String nombre = sc.nextLine();
         Entrenador nuevoEntrenador = new Entrenador(nombre);
 
-        if(entrenador es.contains(nombre)){
+        if(entrenadores.contains(nombre)){
             System.out.println("este entrenador ya esta en la base de datos");
         }else{
             entrenadores.add(nuevoEntrenador);
@@ -36,6 +38,21 @@ public class Principal {
 
         }
 
+
+    }
+
+    public static void agregarPokemonEntrenador(){
+        String introducirNombrePokemon = sc.nextLine();
+        switch (introducirNombrePokemon) {
+            case "Drowzee":
+                Entrenador.agregarPokemon(Pokemon.Drowzee());
+
+
+                break;
+        
+            default:
+                break;
+        }
 
     }
 
@@ -77,10 +94,22 @@ public class Principal {
 
                 case 2:
 
+                listaEntrenadores();
+
 
                 break;
 
                 case 3:
+
+                System.out.println("seleccione un entrenador para usar");
+                
+                String seleccionEntrenador = e.nextLine();
+
+                if(entrenadores.contains(seleccionEntrenador)){
+               
+
+
+                }
 
 
                 break;
@@ -103,12 +132,23 @@ public class Principal {
         switch(opcion){
             case 1:
             System.out.println("Equipo de Pókemones");
+
+            Entrenador.mostrarPokemones();
+         
             break;
             case 2:
             System.out.println("Agregar Pókemon al equipo");
+
+            }
+
+            
+
             break;
             case 3:
             System.out.println("Entrenar Pókemon");
+
+
+
             break;
             case 4:
             System.out.println("Volviendo a gestionar entrenadores");
