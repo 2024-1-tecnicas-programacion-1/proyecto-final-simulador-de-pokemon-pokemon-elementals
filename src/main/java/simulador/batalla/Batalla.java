@@ -8,10 +8,10 @@ public class Batalla {
         String mensaje = "¡La batalla ha comenzado!\n";
         String ganador;
 
-        while(pokemon1.getSalud()<0 && pokemon2.getSalud()>0){
+        while(pokemon1.getSalud()>0 && pokemon2.getSalud()>0){
             pokemon1.atacar(pokemon2);
-            if (pokemon1.getSalud()>0){
-                pokemon1.atacar(pokemon1);
+            if (pokemon2.getSalud()>0){
+                pokemon2.atacar(pokemon1);
             }
 
         }

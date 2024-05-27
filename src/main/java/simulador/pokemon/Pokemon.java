@@ -3,8 +3,8 @@ package simulador.pokemon;
 public abstract class Pokemon {
 
     private String nombre;
-    private int salud;
-    private int puntosDeAtaque;
+    static private int salud;
+    static private int puntosDeAtaque;
     private TipoPokemon tipo;
     private Estado estado;
 
@@ -26,14 +26,14 @@ public abstract class Pokemon {
         salud-=danio;
     }
 
-    public void entrenar(){
+    public static void entrenar(){
         salud+=20;
         puntosDeAtaque+=5;
 
     }
 
-    public double getSalud(){
-        return this.salud;
+    public static double getSalud(){
+        return salud;
     }
 
     public String getNombre(){

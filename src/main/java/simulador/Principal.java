@@ -3,8 +3,18 @@ import java.util.*;
 import persistencia.ArchivosConexion;
 
 import simulador.entrenador.Entrenador;
+import simulador.pokemon.Drowzee;
+import simulador.pokemon.Koffing;
+import simulador.pokemon.Magnemite;
+import simulador.pokemon.Mankey;
+import simulador.pokemon.Meowth;
+import simulador.pokemon.Oddish;
 import simulador.pokemon.Pokemon;
+import simulador.pokemon.Poliwag;
+import simulador.pokemon.Rhyhorn;
+import simulador.pokemon.Spearow;
 import simulador.pokemon.TipoPokemon;
+import simulador.pokemon.Vulpix;
 
 public class Principal {
    static Scanner sc = new Scanner(System.in);
@@ -41,11 +51,31 @@ public class Principal {
 
     }
 
-    public static void agregarPokemonEntrenador(){
+    public Pokemon[] ListaPokemon(){
+        Pokemon drow = new Drowzee();
+        Pokemon koffing = new Koffing();
+        Pokemon magnemite = new Magnemite();
+        Pokemon mankey = new Mankey();
+        Pokemon meowth = new Meowth();
+        Pokemon oddish = new Oddish();
+        Pokemon poliwag = new Poliwag();
+        Pokemon rhyhorn = new Rhyhorn();
+        Pokemon spearow = new Spearow();
+        Pokemon vulpix = new Vulpix();
+
+        for (int i = 0; i < 10; i++) {
+            
+        }
+
+
+    }
+
+    public static void agregarPokemonEntrenador(Entrenador entrenador){
         String introducirNombrePokemon = sc.nextLine();
         switch (introducirNombrePokemon) {
             case "Drowzee":
-                Entrenador.agregarPokemon(Pokemon.Drowzee());
+            Pokemon drowzee = new Drowzee();
+                entrenador.agregarPokemon(drowzee);
 
 
                 break;
@@ -105,12 +135,17 @@ public class Principal {
                 System.out.println("seleccione un entrenador para usar");
                 
                 String seleccionEntrenador = e.nextLine();
-
-                if(entrenadores.contains(seleccionEntrenador)){
-               
+                Entrenador entrenadorEncontrado = null;
 
 
+                for (int i = 0; i < entrenadores.size(); i++) {
+                    Entrenador entrenadorVisitado = entrenadores.get(i);
+                    if(entrenadorVisitado.getNombre().equals(entrenadorVisitado)){
+                        entrenadorEncontrado = entrenadorVisitado;
+                    }
                 }
+                agregarPokemonEntrenador(entrenadorEncontrado);
+
 
 
                 break;
@@ -125,7 +160,7 @@ public class Principal {
             }while(opcion!=4);
            
     }
-    public static void mostrarSeleccionarEntrenador() {
+    public static void mostrarSeleccionarEntrenador(Entrenador entrenador) {
         Scanner e= new Scanner(System.in);
         int opcion;
         do{ System.out.println("\n1: Ver equipo de Pókemones \n2: Agregar Pókemon al equipo \n3 Entrenar Pókemon \n4 Volver a gestionar entrenadores");
@@ -134,11 +169,13 @@ public class Principal {
             case 1:
             System.out.println("Equipo de Pókemones");
 
-            Entrenador.mostrarPokemones();
+            entrenador.mostrarPokemones();
          
             break;
             case 2:
             System.out.println("Agregar Pókemon al equipo");
+            entrenador.agregarPokemon();
+
 
             }
 
