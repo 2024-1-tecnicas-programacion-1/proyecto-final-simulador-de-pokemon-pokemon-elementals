@@ -27,13 +27,17 @@ public class Principal {
     }
 
     public static void registrarEntrenador(){
+
+
+       
         
         String nombre = sc.nextLine();
         Entrenador nuevoEntrenador = new Entrenador(nombre);
 
         if(entrenadores.contains(nombre)){
             System.out.println("este entrenador ya esta en la base de datos");
-        } else{(entrenadores.add(nombre));
+        } else{
+            entrenadores.add(nuevoEntrenador);
             System.out.println("El entrenador nuevo ha sido agregado");
            
         }
@@ -51,7 +55,10 @@ public class Principal {
 
     }
 
-    public Pokemon[] ListaPokemon(){
+    public Pokemon[] listaPokemon(){
+        //agregar los pokemon a la lista de pokemon(en caso de no poder hacerlo con un ciclo hacerlo a mano)
+
+
         Pokemon drow = new Drowzee();
         Pokemon koffing = new Koffing();
         Pokemon magnemite = new Magnemite();
@@ -71,6 +78,8 @@ public class Principal {
     }
 
     public static void agregarPokemonEntrenador(Entrenador entrenador){
+        //agregar los pokemon a la lista interna que cada entrenador tiene para almazenar pokemon
+
         String introducirNombrePokemon = sc.nextLine();
         switch (introducirNombrePokemon) {
             case "Drowzee":
@@ -175,15 +184,16 @@ public class Principal {
             case 2:
             System.out.println("Agregar Pókemon al equipo");
             entrenador.agregarPokemon();
+            //agregar un pokemon al equipo
 
-
-            }
+            
 
             
 
             break;
             case 3:
             System.out.println("Entrenar Pókemon");
+            //llamar un pokemon de un entrenador y llamar el metodo entrenar(que esta en la clase Pokemon), y anidarle el aumento de estadisticas
 
 
 
@@ -196,17 +206,25 @@ public class Principal {
             }
             }while(opcion!=4);
             }
+
+
+
+
             public static void mostrarSubmenu2() {
-                Scanner e= new Scanner(System.in);
+                
                 int opcion;
                 do{ System.out.println("\n1: Ver todos los  Pókemones registrados \n2: Registrar nuevo Pókemon \n3 Volver al menu principal");
-                opcion=e.nextInt();
+                opcion=sc.nextInt();
                 switch(opcion){
                     case 1:
                     System.out.println("Ver todos los Pókemones registrados");
+
+                    //llamar listaPokemon
                     break;
                     case 2:
                     System.out.println("Registrar");
+                    //creo que se puede borrar este
+
                     break;
                     case 3:
                     System.out.println("Volviendo al menu principal");
@@ -216,26 +234,37 @@ public class Principal {
                     }
                     }while(opcion!=3);
                     }
+
+
+
                     public static void mostrarSubmenu3(){
-                        Scanner e= new Scanner(System.in);
+                  
                         int opcion;
                         do{ System.out.println("\n1: Elegir entrenador 1 \n2: Elegir entrenador 2 \n3 Seleccionar Pokémon de entrenador 1 \n4 Seleccionar Pókemon de entrenador 2 \5 Comenzar batalla \n6 Volver al menú principal");
-                            opcion=e.nextInt();
+                            opcion=sc.nextInt();
                             switch(opcion){
                                 case 1:
                                 System.out.println("Elegir entrenador 1");
+
+                                //elegir entrenador
                                 break;
                                 case 2:
                                 System.out.println("Elegir entrenador 2");
+                                //elegir entrenador
                                 break;
                                 case 3:
                                 System.out.println("Seleccionar Pókemon de entrenador 1");
+                                  //hacer que se pueda seleccionar el pokemon que quiere combatir
                                 break;
                                 case 4:
                                 System.out.println("Seleccionar Pókemon de entrenador 2");
+
+                                //hacer que se pueda seleccionar el pokemon que quiere combatir
                                 break;
                                 case 5:
                                 System.out.println("Comenzar batalla");
+
+                                //agregar llamado de metodo
                                 break;
                                 case 6:
                                 System.out.println("Volviendo al menú principal");
