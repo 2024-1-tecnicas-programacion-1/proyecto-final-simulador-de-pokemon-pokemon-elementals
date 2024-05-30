@@ -15,6 +15,7 @@ import simulador.pokemon.Rhyhorn;
 import simulador.pokemon.Spearow;
 import simulador.pokemon.TipoPokemon;
 import simulador.pokemon.Vulpix;
+import java.util.HashMap;
 
 public class Principal {
    static Scanner sc = new Scanner(System.in);
@@ -55,41 +56,116 @@ public class Principal {
 
     }
 
-    public Pokemon[] listaPokemon(){
-        //agregar los pokemon a la lista de pokemon(en caso de no poder hacerlo con un ciclo hacerlo a mano)
+    
+        
+    static Pokemon drowzee = new Drowzee();
+        
+    static Pokemon koffing = new Koffing();
+        
+    static Pokemon magnemite = new Magnemite();
+        
+    static Pokemon mankey = new Mankey();
+    
+    static Pokemon meowth = new Meowth();
+        
+    static Pokemon oddish = new Oddish();
+        
+    static Pokemon poliwag = new Poliwag();
+        
+    static Pokemon rhyhorn = new Rhyhorn();
+        
+    static Pokemon spearow = new Spearow();
+        
+    static Pokemon vulpix = new Vulpix();
 
+    
 
-        Pokemon drow = new Drowzee();
-        Pokemon koffing = new Koffing();
-        Pokemon magnemite = new Magnemite();
-        Pokemon mankey = new Mankey();
-        Pokemon meowth = new Meowth();
-        Pokemon oddish = new Oddish();
-        Pokemon poliwag = new Poliwag();
-        Pokemon rhyhorn = new Rhyhorn();
-        Pokemon spearow = new Spearow();
-        Pokemon vulpix = new Vulpix();
+    public static void listaPokemon(){
+     Pokemon[] lista = new Pokemon[10];
+        lista[0] = drowzee;
+        lista[1] = koffing;
+        lista[2] = magnemite;
+        lista[3] = mankey;
+        lista[4] = meowth;
+        lista[5] = oddish;
+        lista[6] = poliwag;
+        lista[7] = rhyhorn;
+        lista[8] = spearow;
+        lista[9] = vulpix;
 
-        for (int i = 0; i < 10; i++) {
-            
+        for (int i = 0; i < lista.length; i++) {
+            System.out.println(lista[i]);
         }
 
 
     }
+        
+        
+      
+    
+
 
     public static void agregarPokemonEntrenador(Entrenador entrenador){
-        //agregar los pokemon a la lista interna que cada entrenador tiene para almazenar pokemon
+       
+       
 
-        String introducirNombrePokemon = sc.nextLine();
-        switch (introducirNombrePokemon) {
-            case "Drowzee":
-            Pokemon drowzee = new Drowzee();
+        System.out.println("Esta es la lista de pokemon disponibles");
+        System.out.println("El numero que aparece al lado del pokemon corresponde a su Id");
+        System.out.println("Para introducir un pokemon al entrenador introduce la Id del pokemon");
+        System.out.println("");
+        System.out.println("1: Drowzee");
+        System.out.println("2: Koffing");
+        System.out.println("3: Magnemite");
+        System.out.println("4: Mankey");
+        System.out.println("5: Meowth");
+        System.out.println("6: Oddish");
+        System.out.println("7: Poliwag");
+        System.out.println("8: rhyhorn");
+        System.out.println("9: spearow");
+        System.out.println("10: vulpix");
+
+        System.out.println("");
+        System.out.println("a continuacion introduce la Id del pokemon que quieres integrar al equipo:");
+
+
+      
+  
+        String introducirIdPokemon = sc.nextLine();
+        switch (introducirIdPokemon) {
+            case "1":
+            
                 entrenador.agregarPokemon(drowzee);
-
-
                 break;
+            case "2":
+                entrenador.agregarPokemon(koffing);
+                break;
+             case "3":
+                entrenador.agregarPokemon(magnemite);
+             break;
+             case "4":
+                entrenador.agregarPokemon(mankey);
+             break;
+             case "5":
+                entrenador.agregarPokemon(meowth);
+             break;
+             case "6":
+                entrenador.agregarPokemon(oddish);
+             break;
+             case "7":
+                entrenador.agregarPokemon(poliwag);
+             break;
+             case "8":
+                entrenador.agregarPokemon(rhyhorn);
+             break;
+             case "9":
+                entrenador.agregarPokemon(spearow);
+             break;
+             case "10":
+                entrenador.agregarPokemon(vulpix);
+             break;
         
             default:
+            System.out.println("Esta Id no se encuentra en la base de datos");
                 break;
         }
 
@@ -121,10 +197,9 @@ public class Principal {
     }
 
         public static void mostrarSubmenu1(){
-            Scanner e= new Scanner(System.in);
             int opcion;
             do{ System.out.println("Submenú 1: \n1: Registar nuevo entrenador \n2: Ver lista de entrenadores \n3 Seleccionar un entrenador \n4 Volver al menu principal");
-            opcion=e.nextInt();
+            opcion=sc.nextInt();
             switch(opcion){
                 case 1:
                 registrarEntrenador();
@@ -143,7 +218,7 @@ public class Principal {
 
                 System.out.println("seleccione un entrenador para usar");
                 
-                String seleccionEntrenador = e.nextLine();
+                String seleccionEntrenador = sc.nextLine();
                 Entrenador entrenadorEncontrado = null;
 
 
@@ -170,10 +245,10 @@ public class Principal {
            
     }
     public static void mostrarSeleccionarEntrenador(Entrenador entrenador) {
-        Scanner e= new Scanner(System.in);
+        
         int opcion;
         do{ System.out.println("\n1: Ver equipo de Pókemones \n2: Agregar Pókemon al equipo \n3 Entrenar Pókemon \n4 Volver a gestionar entrenadores");
-        opcion=e.nextInt();
+        opcion=sc.nextInt();
         switch(opcion){
             case 1:
             System.out.println("Equipo de Pókemones");
@@ -183,29 +258,60 @@ public class Principal {
             break;
             case 2:
             System.out.println("Agregar Pókemon al equipo");
-            entrenador.agregarPokemon();
-            //agregar un pokemon al equipo
-
-            
-
-            
-
+            agregarPokemonEntrenador(entrenador);  
             break;
             case 3:
             System.out.println("Entrenar Pókemon");
-            //llamar un pokemon de un entrenador y llamar el metodo entrenar(que esta en la clase Pokemon), y anidarle el aumento de estadisticas
+            
 
-
-
-            break;
-            case 4:
-            System.out.println("Volviendo a gestionar entrenadores");
-            break;
-            default:
-            System.out.println("Opción incorrecta");
+            System.out.println("selecciona al pokemon que quieres entrenar");
+            String seleccionPokemon = sc.nextLine();
+            switch (seleccionPokemon) {
+                case "1":
+                
+                    Pokemon.entrenar(drowzee);
+                    break;
+                case "2":
+                Pokemon.entrenar(koffing);
+                    break;
+                 case "3":
+                 Pokemon.entrenar(magnemite);
+                 break;
+                 case "4":
+                 Pokemon.entrenar(mankey);
+                 break;
+                 case "5":
+                 Pokemon.entrenar(meowth);
+                 break;
+                 case "6":
+                 Pokemon.entrenar(oddish);
+                 break;
+                 case "7":
+                 Pokemon.entrenar(poliwag);
+                 break;
+                 case "8":
+                 Pokemon.entrenar(rhyhorn);
+                 break;
+                 case "9":
+                 Pokemon.entrenar(spearow);
+                 break;
+                 case "10":
+                 Pokemon.entrenar(vulpix);
+                 break;
+            
+                default:
+                System.out.println("Esta Id no se encuentra en la base de datos");
+                    break;
             }
-            }while(opcion!=4);
-            }
+                break;
+                case 4:
+                System.out.println("Volviendo a gestionar entrenadores");
+                break;
+                default:
+                System.out.println("Opción incorrecta");
+                }
+                }while(opcion!=4);
+                }
 
 
 
@@ -213,20 +319,17 @@ public class Principal {
             public static void mostrarSubmenu2() {
                 
                 int opcion;
-                do{ System.out.println("\n1: Ver todos los  Pókemones registrados \n2: Registrar nuevo Pókemon \n3 Volver al menu principal");
+                do{ System.out.println("\n1: Ver todos los  Pókemones registrados \n2 Volver al menu principal");
                 opcion=sc.nextInt();
                 switch(opcion){
                     case 1:
                     System.out.println("Ver todos los Pókemones registrados");
 
-                    //llamar listaPokemon
+                   
+                    listaPokemon();
                     break;
-                    case 2:
-                    System.out.println("Registrar");
-                    //creo que se puede borrar este
 
-                    break;
-                    case 3:
+                    case 2:
                     System.out.println("Volviendo al menu principal");
                     break;
                     default:

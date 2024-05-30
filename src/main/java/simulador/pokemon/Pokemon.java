@@ -26,7 +26,7 @@ public abstract class Pokemon {
         salud-=danio;
     }
 
-    public static void entrenar(){
+    public static void entrenar(Pokemon pokemon){
         salud+=20;
         puntosDeAtaque+=5;
 
