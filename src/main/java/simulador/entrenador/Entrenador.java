@@ -2,7 +2,7 @@ package simulador.entrenador;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import simulador.Principal;
 import simulador.pokemon.Pokemon;
 
 public class Entrenador {
@@ -17,7 +17,7 @@ public class Entrenador {
 
     public String getNombre(){
 
-        return nombre;
+        return this.nombre;
     }
 
 
@@ -49,14 +49,12 @@ public class Entrenador {
         }
     }
 
-    public void prepararBatalla (int indicePokemon){
-        if (indicePokemon<0 || indicePokemon>=pokemones.size()) {
-            System.out.println("Pokémon no encontrado");
-            return;
-
-        }
-        Pokemon pokemonSeleccionado = pokemones.get(indicePokemon);
+    public Pokemon prepararBatalla (){
+         int numpokemon =           
+        
+        Pokemon pokemonSeleccionado = pokemones.get(Principal.check());
         System.out.println("Preparando a " + pokemonSeleccionado + " para la batalla");
+        return pokemonSeleccionado;
        
 }
 }

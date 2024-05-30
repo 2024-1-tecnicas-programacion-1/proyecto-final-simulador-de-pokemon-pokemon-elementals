@@ -19,7 +19,10 @@ import java.util.HashMap;
 
 public class Principal {
    static Scanner sc = new Scanner(System.in);
-
+    static int entrenador1;
+    static int entrenador2;
+    static Pokemon pokeluchador1;
+    static Pokemon pokeluchador2;
    static LinkedList<Entrenador> entrenadores = new LinkedList<>();
    
     public static void main(String[] args) {
@@ -193,7 +196,7 @@ public class Principal {
             System.out.println("Opción incorrecta");
             }
         }while(opcion!=4);
-        ArchivosConexion.guardar(entrenadores, );
+           //ArchivosConexion.guardar(entrenadores );
     }
 
         public static void mostrarSubmenu1(){
@@ -348,16 +351,26 @@ public class Principal {
                             switch(opcion){
                                 case 1:
                                 System.out.println("Elegir entrenador 1");
-
+                                    for (int i = 0; i < entrenadores.size(); i++) {
+                                        String nombre1 = entrenadores.get(i).getNombre();
+                                        System.out.println((i+1) + nombre1);
+                                    }
+                                 entrenador1 = sc.nextInt()-1;
                                 //elegir entrenador
                                 break;
                                 case 2:
                                 System.out.println("Elegir entrenador 2");
                                 //elegir entrenador
+                                    for (int i = 0; i < entrenadores.size(); i++) {
+                                        String nombre2 = entrenadores.get(i).getNombre();
+                                        System.out.println((i+1) + nombre2);
+                                    }
+                                    entrenador2 = sc.nextInt()-1;
                                 break;
                                 case 3:
                                 System.out.println("Seleccionar Pókemon de entrenador 1");
                                   //hacer que se pueda seleccionar el pokemon que quiere combatir
+                                pokeluchador1 = entrenadores.get(entrenador1).prepararBatalla();
                                 break;
                                 case 4:
                                 System.out.println("Seleccionar Pókemon de entrenador 2");
@@ -366,7 +379,8 @@ public class Principal {
                                 break;
                                 case 5:
                                 System.out.println("Comenzar batalla");
-
+                                  Batalla batalla = new Batalla(pokemon1,pokemon2);
+                                     batalla.
                                 //agregar llamado de metodo
                                 break;
                                 case 6:
@@ -378,6 +392,8 @@ public class Principal {
 
 
                     }
+
+    
 
 
     }
