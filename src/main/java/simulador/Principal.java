@@ -1,7 +1,7 @@
 package simulador;
 import java.util.*;
 import persistencia.ArchivosConexion;
-
+import simulador.batalla.Batalla;
 import simulador.entrenador.Entrenador;
 import simulador.pokemon.Drowzee;
 import simulador.pokemon.Koffing;
@@ -24,6 +24,9 @@ public class Principal {
     static Pokemon pokeluchador1;
     static Pokemon pokeluchador2;
    static LinkedList<Entrenador> entrenadores = new LinkedList<>();
+   static Pokemon base;
+   static Entrenador nuevoEntrenador;
+  
    
     public static void main(String[] args) {
         mostrarMenuPrincipal();
@@ -35,8 +38,8 @@ public class Principal {
 
        
         
-        String nombre = sc.nextLine();
-        Entrenador nuevoEntrenador = new Entrenador(nombre);
+         String nombre = sc.next();
+         nuevoEntrenador = new Entrenador(nombre);
 
         if(entrenadores.contains(nombre)){
             System.out.println("este entrenador ya esta en la base de datos");
@@ -80,6 +83,28 @@ public class Principal {
     static Pokemon spearow = new Spearow();
         
     static Pokemon vulpix = new Vulpix();
+
+    public static int mapa(int recepcion){
+
+    HashMap<Integer, Pokemon> diccionarioPokemon = new HashMap<Integer, Pokemon>();
+
+    diccionarioPokemon.put (1, drowzee);
+    diccionarioPokemon.put (2, koffing);
+    diccionarioPokemon.put (3, magnemite);
+    diccionarioPokemon.put (4, mankey);
+    diccionarioPokemon.put (5, meowth);
+    diccionarioPokemon.put (6, oddish);
+    diccionarioPokemon.put (7, poliwag);
+    diccionarioPokemon.put (8, rhyhorn);
+    diccionarioPokemon.put (9, spearow);
+    diccionarioPokemon.put (10, vulpix);
+       
+    return recepcion;
+
+
+    }
+    
+  
 
     
 
@@ -133,7 +158,7 @@ public class Principal {
 
       
   
-        String introducirIdPokemon = sc.nextLine();
+        String introducirIdPokemon = sc.next();
         switch (introducirIdPokemon) {
             case "1":
             
@@ -201,7 +226,7 @@ public class Principal {
 
         public static void mostrarSubmenu1(){
             int opcion;
-            do{ System.out.println("Submenú 1: \n1: Registar nuevo entrenador \n2: Ver lista de entrenadores \n3 Seleccionar un entrenador \n4 Volver al menu principal");
+            do{ System.out.println("Submenú 1: \n1: Registar nuevo entrenador \n2: Ver lista de entrenadores \n3 Seleccionar un pokemon \n4 Volver al menu principal");
             opcion=sc.nextInt();
             switch(opcion){
                 case 1:
@@ -219,10 +244,13 @@ public class Principal {
 
                 case 3:
 
-                System.out.println("seleccione un entrenador para usar");
+                System.out.println("seleccione un pokemon para usar");
+                Entrenador entrenadorEncontrado = nuevoEntrenador;
+
+                agregarPokemonEntrenador(entrenadorEncontrado);
                 
                 String seleccionEntrenador = sc.nextLine();
-                Entrenador entrenadorEncontrado = null;
+               
 
 
                 for (int i = 0; i < entrenadores.size(); i++) {
@@ -231,11 +259,15 @@ public class Principal {
                         entrenadorEncontrado = entrenadorVisitado;
                     }
                 }
-                agregarPokemonEntrenador(entrenadorEncontrado);
+                
 
 
+
+mostrarSeleccionarEntrenador(nuevoEntrenador);
 
                 break;
+
+
 
                 case 4:
                 System.out.println("Volviendo al menu principal");
@@ -247,7 +279,9 @@ public class Principal {
             }while(opcion!=4);
            
     }
+    
     public static void mostrarSeleccionarEntrenador(Entrenador entrenador) {
+    
         
         int opcion;
         do{ System.out.println("\n1: Ver equipo de Pókemones \n2: Agregar Pókemon al equipo \n3 Entrenar Pókemon \n4 Volver a gestionar entrenadores");
@@ -255,8 +289,7 @@ public class Principal {
         switch(opcion){
             case 1:
             System.out.println("Equipo de Pókemones");
-
-            entrenador.mostrarPokemones();
+            Entrenador.mostrarPokemon(base);
          
             break;
             case 2:
@@ -269,37 +302,39 @@ public class Principal {
 
             System.out.println("selecciona al pokemon que quieres entrenar");
             String seleccionPokemon = sc.nextLine();
+
+            
             switch (seleccionPokemon) {
                 case "1":
                 
-                    Pokemon.entrenar(drowzee);
+                    Entrenador.entrenarPokemon(1);
                     break;
                 case "2":
-                Pokemon.entrenar(koffing);
+                    Entrenador.entrenarPokemon(2);
                     break;
                  case "3":
-                 Pokemon.entrenar(magnemite);
+                 Entrenador.entrenarPokemon(3);
                  break;
                  case "4":
-                 Pokemon.entrenar(mankey);
+                 Entrenador.entrenarPokemon(4);
                  break;
                  case "5":
-                 Pokemon.entrenar(meowth);
+                 Entrenador.entrenarPokemon(5);
                  break;
                  case "6":
-                 Pokemon.entrenar(oddish);
+                 Entrenador.entrenarPokemon(6);
                  break;
                  case "7":
-                 Pokemon.entrenar(poliwag);
+                 Entrenador.entrenarPokemon(7);
                  break;
                  case "8":
-                 Pokemon.entrenar(rhyhorn);
+                 Entrenador.entrenarPokemon(8);
                  break;
                  case "9":
-                 Pokemon.entrenar(spearow);
+                 Entrenador.entrenarPokemon(9);
                  break;
                  case "10":
-                 Pokemon.entrenar(vulpix);
+                 Entrenador.entrenarPokemon(10);
                  break;
             
                 default:
@@ -346,7 +381,7 @@ public class Principal {
                     public static void mostrarSubmenu3(){
                   
                         int opcion;
-                        do{ System.out.println("\n1: Elegir entrenador 1 \n2: Elegir entrenador 2 \n3 Seleccionar Pokémon de entrenador 1 \n4 Seleccionar Pókemon de entrenador 2 \5 Comenzar batalla \n6 Volver al menú principal");
+                        do{ System.out.println("\n1: Elegir entrenador 1 \n2: Elegir entrenador 2 \n3 Seleccionar Pokémon de entrenador 1 \n4 Seleccionar Pókemon de entrenador 2 \n5 Comenzar batalla \n6 Volver al menú principal");
                             opcion=sc.nextInt();
                             switch(opcion){
                                 case 1:
@@ -355,7 +390,7 @@ public class Principal {
                                         String nombre1 = entrenadores.get(i).getNombre();
                                         System.out.println((i+1) + nombre1);
                                     }
-                                 entrenador1 = sc.nextInt()-1;
+                                 entrenador1 = sc.nextInt();
                                 //elegir entrenador
                                 break;
                                 case 2:
@@ -365,23 +400,31 @@ public class Principal {
                                         String nombre2 = entrenadores.get(i).getNombre();
                                         System.out.println((i+1) + nombre2);
                                     }
-                                    entrenador2 = sc.nextInt()-1;
+                                    entrenador2 = sc.nextInt();
                                 break;
                                 case 3:
                                 System.out.println("Seleccionar Pókemon de entrenador 1");
-                                  //hacer que se pueda seleccionar el pokemon que quiere combatir
-                                pokeluchador1 = entrenadores.get(entrenador1).prepararBatalla();
+                                 
+                                 
+                                  
+                                 int seleccion1 = sc.nextInt();
+                                 
+                                
+                                pokeluchador1 = entrenadores.get(entrenador1).prepararBatalla(mapa(seleccion1));
                                 break;
                                 case 4:
+                               
                                 System.out.println("Seleccionar Pókemon de entrenador 2");
+                                int seleccion2 = sc.nextInt();
+                                pokeluchador2 = entrenadores.get(entrenador2).prepararBatalla(mapa(seleccion2));
 
-                                //hacer que se pueda seleccionar el pokemon que quiere combatir
+                                
                                 break;
                                 case 5:
                                 System.out.println("Comenzar batalla");
-                                  Batalla batalla = new Batalla(pokemon1,pokemon2);
-                                     batalla.
-                                //agregar llamado de metodo
+                                  
+                                 Batalla.IniciarBatalla(pokeluchador1, pokeluchador2);
+                                
                                 break;
                                 case 6:
                                 System.out.println("Volviendo al menú principal");

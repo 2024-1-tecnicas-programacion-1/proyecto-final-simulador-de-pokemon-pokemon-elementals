@@ -4,8 +4,8 @@ import simulador.pokemon.Pokemon;
 
 public class Batalla {
 
-    public String IniciarBatalla(Pokemon pokemon1, Pokemon pokemon2){
-        String mensaje = "¡La batalla ha comenzado!\n";
+    public static String IniciarBatalla(Pokemon pokemon1, Pokemon pokemon2){
+        
         String ganador;
 
         while(pokemon1.getSalud()>0 && pokemon2.getSalud()>0){

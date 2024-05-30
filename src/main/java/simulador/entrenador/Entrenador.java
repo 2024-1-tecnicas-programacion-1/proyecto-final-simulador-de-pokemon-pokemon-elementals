@@ -8,7 +8,9 @@ import simulador.pokemon.Pokemon;
 public class Entrenador {
 
     private String nombre;
-     private List<Pokemon> pokemones;
+    static private List<Pokemon> pokemones;
+
+    
 
     public Entrenador(String nombre) {
         this.nombre = nombre;
@@ -27,7 +29,7 @@ public class Entrenador {
     }
 
 
-    public  void entrenarPokemon (int indicePokemon){
+    public static void entrenarPokemon (int indicePokemon){
         if (indicePokemon<0 || indicePokemon>=pokemones.size()) {
             System.out.println("Pokémon no encontrado");
             return;
@@ -43,19 +45,27 @@ public class Entrenador {
 
     }
     
-    public  void mostrarPokemones() {
-        for (Pokemon pokemon : pokemones) {
-            System.out.println(pokemon);
-        }
-    }
+ 
+        public static Pokemon prepararBatalla (int indicePokemon){
+            if (indicePokemon<0 || indicePokemon>=pokemones.size()) {
+                System.out.println("Pokémon no encontrado");
+                
+    
+            }
+            Pokemon pokemonSeleccionado = pokemones.get(indicePokemon);
+            System.out.println("Preparando a " + pokemonSeleccionado + " para la batalla");
+            return pokemonSeleccionado;
 
-    public Pokemon prepararBatalla (){
-         int numpokemon =           
-        
-        Pokemon pokemonSeleccionado = pokemones.get(Principal.check());
-        System.out.println("Preparando a " + pokemonSeleccionado + " para la batalla");
-        return pokemonSeleccionado;
-       
 }
+
+public static Pokemon mostrarPokemon(Pokemon seleccion){
+    for (int i = 0; i < pokemones.size(); i++) {
+        
+    
+    seleccion = pokemones.get(i);
+    
+    }
+    return seleccion;
+}	
 }
 
